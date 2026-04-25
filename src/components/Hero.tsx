@@ -5,12 +5,23 @@ import { Button } from "@/components/ui/button";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 import heroLottie from "@/assets/hero-lottie.json";
 
-type LottieProps = { animationData: unknown; loop?: boolean; autoplay?: boolean };
+type LottieComp = ComponentType<{ animationData: unknown; loop?: boolean; autoplay?: boolean }>;
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
+  const [Lottie, setLottie] = useState<LottieComp | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    import("lottie-react").then((mod) => {
+      if (mounted) setLottie(() => mod.default as LottieComp);
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   useGSAP(
     () => {
@@ -56,7 +67,7 @@ export function Hero() {
         id="lottie-hero"
         className="absolute top-28 right-8 md:right-16 w-[180px] h-[180px] md:w-[220px] md:h-[220px] pointer-events-none"
       >
-        <Lottie animationData={heroLottie} loop autoplay />
+        {Lottie ? <Lottie animationData={heroLottie} loop autoplay /> : null}
       </div>
 
       <div className="relative w-full lg:w-[70%]">
