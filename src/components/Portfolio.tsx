@@ -3,6 +3,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { Badge } from "@/components/ui/badge";
+import caseSaas from "@/assets/case-saas.jpg";
+import caseAi from "@/assets/case-ai.jpg";
+import caseEcom from "@/assets/case-ecom.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,14 +13,17 @@ const projects = [
   {
     title: "Rapid MVP — SaaS Dashboard",
     stack: ["React", "Supabase", "Stripe"],
+    image: caseSaas,
   },
   {
     title: "AI Document Processor",
     stack: ["LangChain", "FastAPI", "React"],
+    image: caseAi,
   },
   {
     title: "Ecommerce Storefront",
     stack: ["Next.js", "Shopify", "Tailwind"],
+    image: caseEcom,
   },
 ];
 
@@ -76,15 +82,21 @@ export function Portfolio() {
             key={p.title}
             className="aspect-[4/3] w-[70vw] md:w-[40vw] flex-shrink-0 bg-bg-card relative overflow-hidden group"
           >
-            {/* Placeholder image */}
-            <div className="absolute inset-0 bg-bg-surface flex items-center justify-center">
-              <span className="font-mono text-xs text-text-subtle uppercase tracking-widest">
-                0{i + 1} / Image Placeholder
-              </span>
-            </div>
+            {/* Image — grayscale by default, color on hover (spotlight effect) */}
+            <img
+              src={p.image}
+              alt={p.title}
+              loading="lazy"
+              width={1024}
+              height={768}
+              className="absolute inset-0 w-full h-full object-cover grayscale brightness-50 contrast-110 transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:brightness-110 group-hover:scale-105"
+            />
+            <span className="absolute top-4 left-4 font-mono text-xs text-text-subtle uppercase tracking-widest z-10">
+              0{i + 1}
+            </span>
 
             {/* Hover overlay */}
-            <div className="absolute inset-0 bg-bg/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bg/95 via-bg/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
               <h3 className="text-display text-2xl text-text mb-4">
                 {p.title}
               </h3>
