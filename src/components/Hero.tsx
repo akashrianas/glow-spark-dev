@@ -1,14 +1,16 @@
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { Settings } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import founderImg from "@/assets/founder.png";
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
-  const gearRef = useRef<HTMLDivElement>(null);
+  const personRef = useRef<HTMLAnchorElement>(null);
+  const floatRef = useRef<HTMLImageElement>(null);
 
   useGSAP(
     () => {
@@ -26,14 +28,29 @@ export function Hero() {
           { opacity: 1, y: 0, delay: 0.25, duration: 0.9, ease: "expo.out" },
         );
       }
-      if (gearRef.current) {
-        // Continuous gear rotation
-        gsap.to(gearRef.current, {
-          rotate: 360,
-          duration: 12,
-          ease: "none",
+      if (personRef.current) {
+        // Fade-in on load
+        gsap.fromTo(
+          personRef.current,
+          { opacity: 0, y: 60, scale: 0.96 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1.4,
+            delay: 0.35,
+            ease: "expo.out",
+          },
+        );
+      }
+      if (floatRef.current) {
+        // Subtle floating idle motion
+        gsap.to(floatRef.current, {
+          y: -14,
+          duration: 3.2,
+          ease: "sine.inOut",
+          yoyo: true,
           repeat: -1,
-          transformOrigin: "50% 50%",
         });
       }
     },
@@ -46,22 +63,37 @@ export function Hero() {
       id="top"
       className="relative min-h-screen flex items-end pb-20 px-8 md:px-16 overflow-hidden"
     >
-      {/* Rotating gear — top right */}
-      <div
-        className="absolute top-28 right-8 md:right-16 w-[180px] h-[180px] md:w-[220px] md:h-[220px] pointer-events-none flex items-center justify-center"
-        aria-hidden
+      {/* Clickable founder portrait — top right, floats & fades in */}
+      <Link
+        to="/about"
+        ref={personRef}
+        aria-label="About me"
+        className="group absolute top-20 right-4 md:right-12 w-[42vw] max-w-[460px] min-w-[220px] aspect-square pointer-events-auto z-10"
       >
+        {/* Glow halo */}
         <div
-          className="absolute inset-0 rounded-full border border-accent-default/20"
+          className="absolute inset-6 rounded-full bg-accent-default/20 blur-3xl group-hover:bg-accent-default/35 transition-colors duration-500"
+          aria-hidden
         />
+        {/* Soft ring */}
         <div
-          ref={gearRef}
-          className="text-accent-default drop-shadow-[0_0_20px_var(--accent-default)]"
+          className="absolute inset-0 rounded-full border border-accent-default/30 group-hover:border-accent-default/70 transition-colors duration-500"
+          aria-hidden
+        />
+        <img
+          ref={floatRef}
+          src={founderImg}
+          alt="Alex Carter — Founder & Lead Engineer"
+          width={1024}
+          height={1024}
+          className="relative w-full h-full object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:drop-shadow-[0_0_40px_color-mix(in_oklab,var(--accent-default)_55%,transparent)] transition-all duration-500"
           style={{ willChange: "transform" }}
-        >
-          <Settings className="w-32 h-32 md:w-40 md:h-40" strokeWidth={1.2} />
-        </div>
-      </div>
+        />
+        {/* Hover hint */}
+        <span className="absolute bottom-2 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-widest uppercase text-accent-default opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+          → About Me
+        </span>
+      </Link>
 
       <div className="relative w-full lg:w-[70%]">
         <h1
