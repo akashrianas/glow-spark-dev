@@ -1,28 +1,14 @@
-import { useEffect, useRef, useState, type ComponentType } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ambientBg from "@/assets/ambient-bg.mp4.asset.json";
-import { SeamlessVideo } from "./SeamlessVideo";
-import heroLottie from "@/assets/hero-lottie.json";
-
-type LottieComp = ComponentType<{ animationData: unknown; loop?: boolean; autoplay?: boolean }>;
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
-  const [Lottie, setLottie] = useState<LottieComp | null>(null);
-
-  useEffect(() => {
-    let mounted = true;
-    import("lottie-react").then((mod) => {
-      if (mounted) setLottie(() => mod.default as LottieComp);
-    });
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  const gearRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -40,6 +26,16 @@ export function Hero() {
           { opacity: 1, y: 0, delay: 0.25, duration: 0.9, ease: "expo.out" },
         );
       }
+      if (gearRef.current) {
+        // Continuous gear rotation
+        gsap.to(gearRef.current, {
+          rotate: 360,
+          duration: 12,
+          ease: "none",
+          repeat: -1,
+          transformOrigin: "50% 50%",
+        });
+      }
     },
     { scope: root },
   );
@@ -50,20 +46,21 @@ export function Hero() {
       id="top"
       className="relative min-h-screen flex items-end pb-20 px-8 md:px-16 overflow-hidden"
     >
-      {/* Seamless background video */}
-      <SeamlessVideo
-        src={ambientBg.url}
-        className="absolute inset-0 w-full h-full object-cover -z-10"
-      />
-      {/* Dark overlay for legibility */}
-      <div className="absolute inset-0 bg-bg/70 -z-10" aria-hidden />
-
-      {/* Lottie — top right */}
+      {/* Rotating gear — top right */}
       <div
-        id="lottie-hero"
-        className="absolute top-28 right-8 md:right-16 w-[180px] h-[180px] md:w-[220px] md:h-[220px] pointer-events-none"
+        className="absolute top-28 right-8 md:right-16 w-[180px] h-[180px] md:w-[220px] md:h-[220px] pointer-events-none flex items-center justify-center"
+        aria-hidden
       >
-        {Lottie ? <Lottie animationData={heroLottie} loop autoplay /> : null}
+        <div
+          className="absolute inset-0 rounded-full border border-accent-default/20"
+        />
+        <div
+          ref={gearRef}
+          className="text-accent-default drop-shadow-[0_0_20px_var(--accent-default)]"
+          style={{ willChange: "transform" }}
+        >
+          <Settings className="w-32 h-32 md:w-40 md:h-40" strokeWidth={1.2} />
+        </div>
       </div>
 
       <div className="relative w-full lg:w-[70%]">
