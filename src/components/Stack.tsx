@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import stackBg from "@/assets/stack-bg.mp4.asset.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,9 +50,21 @@ export function Stack() {
     <section
       ref={root}
       id="stack"
-      className="bg-bg-surface py-32 px-8 md:px-16"
+      className="relative bg-bg-surface py-32 px-8 md:px-16 overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 items-start">
+      {/* Floating green light video background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none"
+        src={stackBg.url}
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-bg-surface/60 pointer-events-none" aria-hidden />
+
+      <div className="relative mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 items-start">
         <div>
           <p className="font-mono text-xs text-accent-default tracking-widest uppercase mb-6">
             — Tech Stack
