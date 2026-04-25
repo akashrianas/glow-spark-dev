@@ -52,8 +52,16 @@ function Index() {
           src={ambientBg.url}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        {/* Subtle dark overlay for legibility */}
-        <div className="absolute inset-0 bg-black/40" aria-hidden />
+        {/* Stylish dark overlay: deep base + radial vignette + green tint */}
+        <div className="absolute inset-0 bg-black/70" aria-hidden />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.9) 100%)",
+          }}
+          aria-hidden
+        />
       </div>
 
       <CustomCursor />

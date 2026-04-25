@@ -83,14 +83,14 @@ export function Hero() {
         <div className="mt-10 flex flex-wrap gap-4">
           <Button
             asChild
-            className="bg-accent-default text-bg hover:bg-accent-muted font-mono text-xs tracking-widest uppercase rounded-none px-6 h-11"
+            className="bg-accent-default text-bg hover:bg-accent-muted font-mono text-xs tracking-widest uppercase rounded-none px-6 h-12 shadow-[0_0_30px_color-mix(in_oklab,var(--accent-default)_60%,transparent)] hover:shadow-[0_0_45px_color-mix(in_oklab,var(--accent-default)_85%,transparent)] transition-shadow"
           >
             <a href="#work">View Work</a>
           </Button>
           <Button
             variant="outline"
             asChild
-            className="bg-transparent border border-text-subtle text-text-muted hover:bg-transparent hover:border-accent-default hover:text-accent-default font-mono text-xs tracking-widest uppercase rounded-none px-6 h-11"
+            className="bg-bg/60 backdrop-blur-md border-2 border-accent-default/70 text-accent-default hover:bg-accent-default hover:text-bg hover:border-accent-default font-mono text-xs tracking-widest uppercase rounded-none px-6 h-12 transition-colors"
           >
             <a href="#services">See Services</a>
           </Button>
