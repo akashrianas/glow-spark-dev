@@ -8,7 +8,7 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { CustomCursor } from "@/components/CustomCursor";
 import { SeamlessVideo } from "@/components/SeamlessVideo";
-import ambientBg from "@/assets/ambient-bg.mp4.asset.json";
+import ambientBg from "@/assets/aurora-bg.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
