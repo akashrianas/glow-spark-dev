@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SiteHeader } from "@/components/SiteHeader";
+import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { Work } from "@/components/Work";
@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="min-h-screen bg-bg text-text">
-      <SiteHeader />
+      <Navbar />
       <Hero />
       <Services />
       <Work />
