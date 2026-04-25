@@ -1,7 +1,6 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import Lottie from "lottie-react";
 import { Button } from "@/components/ui/button";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 import heroLottie from "@/assets/hero-lottie.json";
