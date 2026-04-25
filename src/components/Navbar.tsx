@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 
 const links = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "Stack", href: "#stack" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/#services" },
+  { label: "Stack", href: "/#stack" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
