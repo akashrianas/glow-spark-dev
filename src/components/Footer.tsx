@@ -6,7 +6,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="bg-bg border-t border-text-subtle/20 py-12 px-8 md:px-16">
+    <footer className="border-t border-text-subtle/20 py-12 px-8 md:px-16 bg-bg/40 backdrop-blur-sm">
       <div className="mx-auto max-w-7xl flex flex-col gap-10">
         <div className="flex flex-col md:flex-row justify-between gap-6">
           <div className="flex items-center gap-4">

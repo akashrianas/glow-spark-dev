@@ -61,7 +61,7 @@ export function Portfolio() {
   );
 
   return (
-    <section ref={sectionRef} id="work" className="bg-bg py-32 overflow-hidden">
+    <section ref={sectionRef} id="work" className="py-32 overflow-hidden">
       <p className="font-mono text-xs text-accent-default tracking-widest uppercase px-8 md:px-16 mb-6">
         — Selected Work
       </p>

@@ -81,7 +81,7 @@ export function Services() {
     <section
       ref={root}
       id="services"
-      className="bg-bg-surface py-32 px-8 md:px-16"
+      className="py-32 px-8 md:px-16"
     >
       <div className="mx-auto max-w-7xl">
         <p className="font-mono text-xs text-accent-default tracking-widest uppercase mb-6">
