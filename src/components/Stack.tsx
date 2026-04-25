@@ -77,7 +77,7 @@ export function Stack() {
             <div
               key={tech}
               data-stack-badge
-              className="bg-bg-card border border-text-subtle/20 p-4 font-mono text-sm text-text-muted hover:border-accent-default/50 hover:text-accent-default transition-colors cursor-default"
+              className="bg-bg-card/70 backdrop-blur-sm border border-text-subtle/20 p-4 font-mono text-sm text-text-muted hover:border-accent-default/50 hover:text-accent-default transition-colors cursor-default"
             >
               {tech}
             </div>
