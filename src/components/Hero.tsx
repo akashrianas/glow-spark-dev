@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 import heroLottie from "@/assets/hero-lottie.json";
 
+type LottieProps = { animationData: unknown; loop?: boolean; autoplay?: boolean };
+
 export function Hero() {
   const root = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
