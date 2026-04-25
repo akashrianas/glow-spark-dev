@@ -99,6 +99,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   ::selection {
     background-color: var(--color-accent-default);
     color: oklch(0.05 0 0);
