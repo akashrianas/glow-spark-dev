@@ -7,6 +7,8 @@ import { Stack } from "@/components/Stack";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { CustomCursor } from "@/components/CustomCursor";
+import { SeamlessVideo } from "@/components/SeamlessVideo";
+import ambientBg from "@/assets/ambient-bg.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,7 +41,17 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="bg-bg text-text">
+    <div className="relative bg-bg text-text">
+      {/* Global ambient video background — fixed, behind everything */}
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <SeamlessVideo
+          src={ambientBg.url}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Dark overlay for legibility across all sections */}
+        <div className="absolute inset-0 bg-bg/75" aria-hidden />
+      </div>
+
       <CustomCursor />
       <Navbar />
       <main>

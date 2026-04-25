@@ -15,7 +15,7 @@ export function Navbar() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 w-full bg-bg"
+      className="fixed top-0 left-0 right-0 z-50 w-full bg-bg/60 backdrop-blur-md border-b border-white/5"
       style={{ borderBottom: "1px solid #1A1A1A" }}
     >
       <div className="mx-auto flex h-16 items-center justify-between px-6 md:px-10">

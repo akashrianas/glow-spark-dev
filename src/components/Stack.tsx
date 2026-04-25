@@ -2,8 +2,6 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import ambientBg from "@/assets/ambient-bg.mp4.asset.json";
-import { SeamlessVideo } from "./SeamlessVideo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,15 +49,8 @@ export function Stack() {
     <section
       ref={root}
       id="stack"
-      className="relative bg-bg-surface py-32 px-8 md:px-16 overflow-hidden"
+      className="relative py-32 px-8 md:px-16 overflow-hidden"
     >
-      {/* Floating green light video background */}
-      <SeamlessVideo
-        src={ambientBg.url}
-        className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none"
-      />
-      <div className="absolute inset-0 bg-bg-surface/60 pointer-events-none" aria-hidden />
-
       <div className="relative mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 items-start">
         <div>
           <p className="font-mono text-xs text-accent-default tracking-widest uppercase mb-6">
