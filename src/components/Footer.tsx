@@ -22,6 +22,8 @@ export function Footer() {
               <a
                 key={s.label}
                 href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-mono text-xs text-text-muted hover:text-accent-default uppercase tracking-widest transition-colors"
               >
                 {s.label}
