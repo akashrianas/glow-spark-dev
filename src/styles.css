@@ -91,12 +91,17 @@
     border-color: var(--color-border);
   }
 
-  html,
-  body {
+  html {
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: transparent;
+    color: var(--color-text);
+    font-family: var(--font-sans);
   }
 
   html {
