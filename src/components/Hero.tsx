@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import Lottie from "lottie-react";
 import { Button } from "@/components/ui/button";
+import heroVideo from "@/assets/hero-bg.mp4.asset.json";
+import heroLottie from "@/assets/hero-lottie.json";
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
@@ -34,14 +37,25 @@ export function Hero() {
       id="top"
       className="relative min-h-screen flex items-end pb-20 px-8 md:px-16 overflow-hidden"
     >
-      {/* Lottie placeholder — top right */}
+      {/* Background video */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover -z-10"
+        src={heroVideo.url}
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden
+      />
+      {/* Dark overlay for legibility */}
+      <div className="absolute inset-0 bg-bg/70 -z-10" aria-hidden />
+
+      {/* Lottie — top right */}
       <div
         id="lottie-hero"
-        className="absolute top-28 right-8 md:right-16 w-[180px] h-[180px] md:w-[220px] md:h-[220px] rounded-full border border-dashed border-text-subtle flex items-center justify-center"
+        className="absolute top-28 right-8 md:right-16 w-[180px] h-[180px] md:w-[220px] md:h-[220px] pointer-events-none"
       >
-        <span className="font-mono text-xs text-text-subtle">
-          [ lottie animation ]
-        </span>
+        <Lottie animationData={heroLottie} loop autoplay />
       </div>
 
       <div className="relative w-full lg:w-[70%]">
