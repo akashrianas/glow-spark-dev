@@ -41,15 +41,19 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="relative bg-bg text-text">
-      {/* Global ambient video background — fixed, behind everything */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+    <div className="relative text-text">
+      {/* Global ambient video background — fixed, behind everything.
+          Rendered as a sibling outside the stacking-context wrapper so -z-10 actually goes behind. */}
+      <div
+        className="fixed inset-0 overflow-hidden pointer-events-none"
+        style={{ zIndex: -1 }}
+      >
         <SeamlessVideo
           src={ambientBg.url}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        {/* Dark overlay for legibility across all sections */}
-        <div className="absolute inset-0 bg-bg/75" aria-hidden />
+        {/* Subtle dark overlay for legibility */}
+        <div className="absolute inset-0 bg-black/40" aria-hidden />
       </div>
 
       <CustomCursor />
