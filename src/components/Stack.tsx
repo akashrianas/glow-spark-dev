@@ -2,7 +2,8 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import stackBg from "@/assets/stack-bg.mp4.asset.json";
+import ambientBg from "@/assets/ambient-bg.mp4.asset.json";
+import { SeamlessVideo } from "./SeamlessVideo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,14 +54,9 @@ export function Stack() {
       className="relative bg-bg-surface py-32 px-8 md:px-16 overflow-hidden"
     >
       {/* Floating green light video background */}
-      <video
+      <SeamlessVideo
+        src={ambientBg.url}
         className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none"
-        src={stackBg.url}
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden
       />
       <div className="absolute inset-0 bg-bg-surface/60 pointer-events-none" aria-hidden />
 

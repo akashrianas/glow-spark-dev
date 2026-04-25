@@ -2,7 +2,8 @@ import { useEffect, useRef, useState, type ComponentType } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Button } from "@/components/ui/button";
-import heroVideo from "@/assets/hero-bg.mp4.asset.json";
+import ambientBg from "@/assets/ambient-bg.mp4.asset.json";
+import { SeamlessVideo } from "./SeamlessVideo";
 import heroLottie from "@/assets/hero-lottie.json";
 
 type LottieComp = ComponentType<{ animationData: unknown; loop?: boolean; autoplay?: boolean }>;
@@ -49,15 +50,10 @@ export function Hero() {
       id="top"
       className="relative min-h-screen flex items-end pb-20 px-8 md:px-16 overflow-hidden"
     >
-      {/* Background video */}
-      <video
+      {/* Seamless background video */}
+      <SeamlessVideo
+        src={ambientBg.url}
         className="absolute inset-0 w-full h-full object-cover -z-10"
-        src={heroVideo.url}
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden
       />
       {/* Dark overlay for legibility */}
       <div className="absolute inset-0 bg-bg/70 -z-10" aria-hidden />
