@@ -1,13 +1,9 @@
-{
-  "version": 2,
-  "buildCommand": "bun run build",
-  "installCommand": "bun install",
-  "outputDirectory": ".output",
-  "framework": null,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ]
-}
+import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+
+export default defineConfig({
+  vite: {
+    nitro: {
+      preset: "vercel",
+    },
+  },
+});
