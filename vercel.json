@@ -2,12 +2,12 @@
   "version": 2,
   "buildCommand": "bun run build",
   "installCommand": "bun install",
-  "outputDirectory": ".output",
+  "outputDirectory": "dist/client",
   "framework": null,
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/"
+      "destination": "/index.html"
     }
   ]
 }
