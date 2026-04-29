@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "vite build",
+  "framework": "tanstack-start",
   "installCommand": "bun install",
-  "framework": "tanstack-start"
+  "buildCommand": "bun run build"
 }
